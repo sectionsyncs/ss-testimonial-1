@@ -1,0 +1,104 @@
+.ss-testimonial-1 {
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(var(--ss-section-bg));
+    * {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        box-sizing: border-box;
+        max-width: unset;
+        min-width: unset;
+        max-height: unset;
+        min-height: unset;
+    }
+    .ss-inner-container {
+        padding: 100px 0;
+        .svg-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            width: max-content;
+            margin: auto;
+            transform: translate(37%,5%);
+            @media screen and (max-width: 750px) {
+                transform: translate(-3%,5%);
+            }
+            svg {
+
+            }
+        }
+        .smart-slider { 
+            width: 700px;
+            max-width: 85%;
+            margin: 0 auto;
+            display: block;
+            .mySwiper {
+                .swiper-slide {
+                    padding: 25px;
+                    @media screen and (max-width: 750px) {
+                        padding: 10px;
+                    }
+                    background: rgba(var(--ss-review-color));
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                    border-radius: 20px;
+                    .ss-author_image {
+                        text-align: center;
+                    }
+
+                    .author_image {
+                        width: 102px;
+                        height: 102px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        object-position: center;
+                        margin-bottom: 10px;
+                        @media screen and (max-width: 750px) {
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                    .ss-name {
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 24px;
+                        line-height: 29px;
+                        text-align: center;
+                        color: #3D3D3D;
+                        margin-bottom: 10px;
+                        @media screen and (max-width: 750px) {
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                    .ss-title {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 22px;
+                        text-align: center;
+                        color: #3D3D3D;
+                        margin-bottom: 10px;
+                        @media screen and (max-width: 750px) {
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                    .ss-rte {
+                        padding: 0 30px;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 22px;
+                        text-align: center;
+                        color: #3D3D3D;
+                        @media screen and (max-width: 750px) {
+                            padding: 10px;
+                            font-size: 14px;
+                            line-height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

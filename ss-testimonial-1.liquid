@@ -1,0 +1,136 @@
+{% assign lastId = section.id | split: '_' | last | downcase %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{{'ss-testimonial-1.css' | asset_url | stylesheet_tag }}
+{% style %}
+    #shopify-section-{{ section.id }} {
+        --ss-section-bg: {{ section.settings.section_bg.red }}, {{ section.settings.section_bg.green }}, {{ section.settings.section_bg.blue }}, {{ section.settings.section_bg.alpha }};
+        --ss-text-color: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }}, {{ section.settings.text_color.blue }}, {{ section.settings.text_color.alpha }};
+        --ss-shape-color: {{ section.settings.shape_color.red }}, {{ section.settings.shape_color.green }}, {{ section.settings.shape_color.blue }}, {{ section.settings.shape_color.alpha }};
+        --ss-review-color: {{ section.settings.review_color.red }}, {{ section.settings.review_color.green }}, {{ section.settings.review_color.blue }}, {{ section.settings.review_color.alpha }};
+    }
+{% endstyle %}
+
+<div class="ss-inner-container">
+    <div class="svg-bg-wrapper">
+        <svg width="565" height="520" viewBox="0 0 565 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M273.312 0.156445C343.073 -1.9473 412.16 17.0692 464.637 63.0649C520.725 112.225 557.23 180.001 563.297 254.322C569.903 335.255 559.1 425.34 498.635 479.564C439.826 532.304 352.075 520.574 273.312 514.376C202.838 508.831 132.064 495.426 80.8714 446.693C28.5018 396.84 -2.2604 326.573 0.129791 254.322C2.45182 184.131 41.7653 122.113 93.1919 74.2663C142.599 28.2982 205.847 2.19095 273.312 0.156445Z" fill="#FFB800"/>
+        </svg>
+    </div>
+    <ss-smart-slider-{{lastId}} class="smart-slider"> 
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide" {{ block.shopify_attributes }}>
+                        <div class="ss-author_image">
+                            <img src="{{ block.settings.author_image | img_url: '300x' }}" alt="{{ block.settings.author_image.alt }}" class="author_image">
+                        </div>
+                        <h3 class="ss-name">
+                            {{ block.settings.author_name }}
+                        </h3>
+                        <p class="ss-title">
+                            {{ block.settings.author_title }}
+                        </p>
+                        <div class="ss-rte rte">
+                            {{ block.settings.testimonial_text  }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <script type="application/json">
+            {
+                "slidesPerView": 1,
+                "spaceBetween": 30,
+                "loop": false,
+                "effect": "cards",
+                "centeredSlides": true 
+            }   
+        </script>
+    </ss-smart-slider-{{lastId}}>
+</div>
+<script defer>
+    if(!customElements.get('ss-smart-slider-{{lastId}}')){
+        class SsSmartSlider{{lastId}} extends HTMLElement {
+            constructor(){
+                super();
+                this.config = JSON.parse(this.querySelector('script[type="application/json"]').textContent);
+                console.log(this.config, this.querySelector('.swiper'));
+                new Swiper(this.querySelector('.swiper'), this.config);
+            }
+        }
+        customElements.define('ss-smart-slider-{{lastId}}', SsSmartSlider{{lastId}});
+    }
+</script>
+{% schema %}
+{
+    "name": "SS Testimonial 1",
+    "class": "ss-testimonial-1",
+    "presets": [
+        {
+            "name":"SS Testimonial 1"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "testimonial",
+            "name": "Testimonial",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "testimonial_text",
+                    "label": "Testimonial Text",
+                    "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesque enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesque enim.</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "author_name",
+                    "label": "Author Name",
+                    "default": "Hannah Schmitt"
+                },
+                {
+                    "type": "text",
+                    "id": "author_title",
+                    "label": "Author Title",
+                    "default": "Lead designer"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "author_image",
+                    "label": "Author Image"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Color Settings"
+        },
+        {
+            "type": "color",
+            "id": "section_bg",
+            "label": "Section Background",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "shape_color",
+            "label": "Shape Color",
+            "default": "#FFB800"
+        },
+        {
+            "type": "color",
+            "id": "review_color",
+            "label": "Review Color",
+            "default": "#FFFFFF"
+        }
+    ]
+}
+{% endschema %}
