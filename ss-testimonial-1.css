@@ -29,6 +29,9 @@
     transform: translate(-3%, 5%);
   }
 }
+.ss-testimonial-1 .ss-inner-container .svg-bg-wrapper svg path {
+  fill: rgba(var(--ss-shape-color)) !important;
+}
 .ss-testimonial-1 .ss-inner-container .smart-slider {
   width: 700px;
   max-width: 85%;
