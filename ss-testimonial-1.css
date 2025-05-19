@@ -16,6 +16,21 @@
 .ss-testimonial-1 .ss-inner-container {
   padding: 100px 0;
 }
+.ss-testimonial-1 .ss-inner-container .swiper-button-prev,
+.ss-testimonial-1 .ss-inner-container .swiper-button-next {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.ss-testimonial-1 .ss-inner-container .swiper-button-prev:after,
+.ss-testimonial-1 .ss-inner-container .swiper-button-next:after {
+  font-size: 14px;
+}
 .ss-testimonial-1 .ss-inner-container .svg-bg-wrapper {
   position: absolute;
   inset: 0;
