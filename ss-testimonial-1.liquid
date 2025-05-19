@@ -37,6 +37,8 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="swiper-button-prev swiper-button-prev-{{ section.id }}"></div>
+            <div class="swiper-button-next swiper-button-next-{{ section.id }}"></div>
         </div>
         <script type="application/json">
             {
@@ -44,7 +46,12 @@
                 "spaceBetween": 30,
                 "loop": false,
                 "effect": "cards",
-                "centeredSlides": true 
+                "centeredSlides": true,
+                "navigation": {
+                    "enabled": true,
+                    "nextEl": ".swiper-button-next-{{ section.id }}",
+                    "prevEl": ".swiper-button-prev-{{ section.id }}"
+                }
             }   
         </script>
     </ss-smart-slider-{{lastId}}>
