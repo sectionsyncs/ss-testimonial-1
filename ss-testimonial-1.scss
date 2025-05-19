@@ -24,7 +24,9 @@
                 transform: translate(-3%,5%);
             }
             svg {
-
+                path {
+                    fill: rgba(var(--ss-shape-color)) !important;
+                }
             }
         }
         .smart-slider { 
